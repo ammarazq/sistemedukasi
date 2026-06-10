@@ -165,20 +165,53 @@ const leafPositions = [
   { right: '22%', top: '5%', delay: '0.5s' },
 ];
 
+// const keyframesStyle = `
+//   @keyframes sway {
+//     0%, 100% { transform: rotate(-5deg); }
+//     50%       { transform: rotate(5deg);  }
+//   }
+//   @keyframes floatLeaf {
+//     0%, 100% { transform: translateY(0) rotate(0deg); }
+//     50%       { transform: translateY(-7px) rotate(10deg); }
+//   }
+// `;
 const keyframesStyle = `
   @keyframes sway {
-    0%, 100% { transform: rotate(-5deg); }
-    50%       { transform: rotate(5deg);  }
+    0%,100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
   }
+
   @keyframes floatLeaf {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50%       { transform: translateY(-7px) rotate(10deg); }
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-7px) rotate(10deg); }
+  }
+
+  @keyframes fadeDown {
+    from {
+      opacity: 0;
+      transform: translateY(-16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 
-export default function Homescreen({ onNavigate }) {
+export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
   return (
-    <>
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+      }}
+    >
+
       <style>{keyframesStyle}</style>
 
       {/* Sky glow */}
@@ -200,7 +233,8 @@ export default function Homescreen({ onNavigate }) {
               top: pos.top,
             }}
           >
-            🪔
+            {/* 🪔 */}
+            {i % 2 === 0 ? '🌙' : '🏮'}
           </span>
         ))}
       </div>
@@ -220,42 +254,61 @@ export default function Homescreen({ onNavigate }) {
               top: pos.top,
             }}
           >
-            {i === 2 ? '🍀' : '🍃'}
+            ✨
           </span>
         ))}
       </div>
 
       {/* Mosque silhouette */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 'clamp(70px,16vw,150px)', pointerEvents: 'none', zIndex: 3 }}>
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 'clamp(140px,28vw,200px)', pointerEvents: 'none', zIndex: 3 }}>
         <svg
-          style={{ width: '100%', height: '100%', opacity: 0.5 }}
+          style={{ width: '100%', height: '100%', opacity: 0.75, filter: 'drop-shadow(0 0 20px rgba(255,220,120,0.2))' }}
           viewBox="0 0 900 160"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMax meet"
         >
           <g fill="#0a3d28">
-            <rect x="20" y="110" width="60" height="50" />
-            <ellipse cx="50" cy="110" rx="30" ry="18" />
-            <rect x="46" y="88" width="8" height="24" />
-            <polygon points="46,88 50,76 54,88" />
-            <rect x="330" y="70" width="240" height="90" />
-            <ellipse cx="450" cy="70" rx="70" ry="40" />
-            <rect x="443" y="26" width="14" height="46" />
-            <polygon points="443,26 450,10 457,26" />
-            <rect x="290" y="40" width="24" height="120" />
-            <ellipse cx="302" cy="40" rx="12" ry="8" />
-            <rect x="299" y="20" width="6" height="22" />
-            <polygon points="299,20 302,8 305,20" />
-            <rect x="586" y="40" width="24" height="120" />
-            <ellipse cx="598" cy="40" rx="12" ry="8" />
-            <rect x="595" y="20" width="6" height="22" />
-            <polygon points="595,20 598,8 601,20" />
-            <rect x="820" y="110" width="60" height="50" />
-            <ellipse cx="850" cy="110" rx="30" ry="18" />
-            <rect x="846" y="88" width="8" height="24" />
-            <polygon points="846,88 850,76 854,88" />
-            <rect x="0" y="150" width="900" height="20" />
-          </g>
+          {/* Alas */}
+          <rect x="0" y="145" width="900" height="20" />
+          {/* Menara kiri luar */}
+          <rect x="40" y="40" width="20" height="105" />
+          <ellipse cx="50" cy="40" rx="12" ry="10" />
+          <rect x="47" y="18" width="6" height="22" />
+          <polygon points="47,18 50,5 53,18" />
+          {/* Menara kiri dalam */}
+          <rect x="180" y="20" width="24" height="125" />
+          <ellipse cx="192" cy="20" rx="14" ry="10" />
+          <rect x="189" y="0" width="6" height="20" />
+          <polygon points="189,0 192,-12 195,0" />
+          {/* Bangunan utama */}
+          <rect x="250" y="75" width="400" height="80" />
+          {/* Kubah tengah */}
+          <ellipse cx="450" cy="75" rx="90" ry="55" />
+          <rect x="444" y="0" width="12" height="75" />
+          <polygon points="444,0 450,-20 456,0" />
+          {/* Kubah kiri */}
+          <ellipse cx="320" cy="90" rx="40" ry="25" />
+          {/* Kubah kanan */}
+          <ellipse cx="580" cy="90" rx="40" ry="25" />
+          {/* Menara kanan dalam */}
+          <rect x="696" y="20" width="24" height="125" />
+          <ellipse cx="708" cy="20" rx="14" ry="10" />
+          <rect x="705" y="0" width="6" height="20" />
+          <polygon points="705,0 708,-12 711,0" />
+          {/* Menara kanan luar */}
+          <rect x="840" y="40" width="20" height="105" />
+          <ellipse cx="850" cy="40" rx="12" ry="10" />
+          <rect x="847" y="18" width="6" height="22" />
+          <polygon points="847,18 850,5 853,18" />
+
+          <circle cx="320" cy="115" r="3" fill="#ffd95a" />
+          <circle cx="450" cy="115" r="3" fill="#ffd95a" />
+          <circle cx="580" cy="115" r="3" fill="#ffd95a" />
+
+          <circle cx="50" cy="90" r="2" fill="#ffd95a" />
+          <circle cx="850" cy="90" r="2" fill="#ffd95a" />
+        </g>
+
         </svg>
       </div>
 
@@ -271,7 +324,7 @@ export default function Homescreen({ onNavigate }) {
             key={i}
             style={{ position: 'absolute', bottom: 0, fontSize: p.size, lineHeight: 1, left: p.left, right: p.right }}
           >
-            {i % 2 === 0 ? '🌿' : '🌱'}
+            {i % 2 === 0 ? '🌾' : '🌿' }
           </span>
         ))}
       </div>
@@ -301,11 +354,12 @@ export default function Homescreen({ onNavigate }) {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', zIndex: 10 }}>
-        <MenuButton label="▶ MULAI" gold={true} onClick={() => onNavigate('game')} delay="0.2s" />
-        <MenuButton label="📖 PANDUAN" onClick={() => onNavigate('panduan')} delay="0.3s" />
-        <MenuButton label="ℹ TENTANG" onClick={() => onNavigate('tentang')} delay="0.4s" />
+        <MenuButton label="▶ MULAI" gold={true} onClick={(onMulai)} delay="0.2s" />
+        <MenuButton label="📖 PANDUAN" onClick={(onPanduan)} delay="0.3s" />
+        <MenuButton label="ℹ TENTANG" onClick={(onTentang)} delay="0.4s" />
+        {/* <MenuButton label="ℹ TENTANG" onClick={(onTentang) => onNavigate('tentang')} delay="0.4s" /> */}
       </div>
     </div>
-    </>
+    </div>
   );
 }

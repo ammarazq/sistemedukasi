@@ -7,7 +7,7 @@ const keyframes = `
   }
 `;
 
-export default function MenuButton({ label, onClick, gold = false, delay = '0s', style = {} }) {
+export default function MenuButton({ label, children, onClick, gold = false, delay = '0s', style = {} }) {
   const bgGreen = {
     background: 'linear-gradient(135deg,#2d6e4e 0%,#1a4d35 50%,#0d3a26 100%)',
     borderColor: 'rgba(200,160,60,0.5)',
@@ -51,7 +51,7 @@ export default function MenuButton({ label, onClick, gold = false, delay = '0s',
           }}
         />
         <span style={{ position: 'relative', zIndex: 1, color: gold ? '#fff8e0' : '#f5e9c0' }}>
-          {label}
+          {label || children}
         </span>
       </button>
     </>

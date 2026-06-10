@@ -29,11 +29,13 @@ export default function PanduanPage({ onBack }) {
         border: '1.5px solid rgba(255,255,255,0.35)',
         borderRadius: 20,
         padding: 'clamp(16px,4vw,32px)',
-        maxWidth: 600,
         width: '100%',
         animation: 'fadeDown 0.6s ease both',
         overflowY: 'auto',
-        maxHeight: '80svh',
+        height: '100%',
+        maxWidth: 'none',
+        maxHeight: 'none',
+        minHeight: '100vh',
       }}
     >
       {/* Back */}

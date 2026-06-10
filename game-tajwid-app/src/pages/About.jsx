@@ -16,8 +16,11 @@ export default function TentangPage({ onBack }) {
         border: '1.5px solid rgba(255,255,255,0.35)',
         borderRadius: 20,
         padding: 'clamp(16px,4vw,32px)',
-        maxWidth: 520,
         width: '100%',
+        height: '100%',
+        maxWidth: 'none',
+        maxHeight: 'none',
+        minHeight: '100vh',
         textAlign: 'center',
         animation: 'fadeDown 0.6s ease both',
       }}
@@ -51,7 +54,7 @@ export default function TentangPage({ onBack }) {
           fontWeight: 600,
         }}
       >
-        HarakatGo adalah aplikasi belajar harakat Al-Quran yang menyenangkan dan interaktif.
+        Gameland adalah aplikasi belajar harakat Al-Quran yang menyenangkan dan interaktif.
         Dirancang untuk pemula yang ingin mengenal tanda baca Arab dengan cara yang mudah dan gamifikasi.
       </p>
 

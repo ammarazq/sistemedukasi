@@ -6,6 +6,7 @@ import { useState }     from 'react';
 import { HURUF }        from '../data/huruf';
 import { bacaProgres }  from '../utils/progres';
 import Tombol           from '../pages/MenuButton';
+import '../App.css';
 
 export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
   const progres = bacaProgres();
@@ -37,7 +38,8 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       </div>
 
       {/* Grid huruf */}
-      <div style={{
+      <div className= "huruf-grid"
+      style={{
         display: 'grid', gridTemplateColumns: 'repeat(4,1fr)',
         gap: '10px', padding: '16px', overflowY: 'auto', flex: 1,
         minHeight: 0,

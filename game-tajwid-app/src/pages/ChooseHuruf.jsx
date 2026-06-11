@@ -31,7 +31,36 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
           ← Kembali
         </Tombol>
       </div>
-        <h1 style={{ fontSize: '35px', fontWeight: 800, textAlign: 'center'}}>Pilih Huruf</h1>
+      <div style={{ textAlign: 'center' }}>
+  <div
+    style={{
+      fontSize: '60px',
+      animation: 'bounce 2s infinite'
+    }}
+  >
+    📖✨
+  </div>
+
+  <h1
+    style={{
+      fontSize: '35px',
+      fontWeight: 800,
+      color: '#0f8a70'
+    }}
+  >
+    Pilih Huruf Hijaiyah
+  </h1>
+
+  <p
+    style={{
+      fontSize: '17px',
+      color: 'var(--muted)'
+    }}
+  >
+    🌟 Ayo pilih huruf yang ingin dipelajari 🌟
+  </p>
+</div>
+        {/* <h1 style={{ fontSize: '35px', fontWeight: 800, textAlign: 'center'}}>Pilih Huruf</h1> */}
         <p  style={{ fontSize: '17px', color: 'var(--muted)', marginTop: 2, textAlign: 'center'}}>
           Tap huruf yang ingin dipelajari
         </p>

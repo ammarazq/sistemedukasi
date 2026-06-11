@@ -2,43 +2,45 @@
  * src/screens/PilihHuruf.jsx
  * Grid 28 huruf hijaiyah. Tap huruf → pilih → klik Mulai.
  */
+import { useState }     from 'react';
 import { HURUF }        from '../data/huruf';
 import { bacaProgres }  from '../utils/progres';
 import Tombol           from '../pages/MenuButton';
 
 export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
   const progres = bacaProgres();
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg)' }}>
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg)'}}>
       {/* Header */}
       <div style={{
         background: 'var(--card)', padding: '20px 20px 16px',
         boxShadow: '0 2px 8px rgba(44,24,16,.06)',
       }}>
-        <button
+      <div style={{ maxWidth: '30px', marginBottom: '6px' }}>
+        <Tombol
           onClick={onBack}
           style={{
-            marginBottom: '12px',
-            padding: '8px 14px',
-            borderRadius: '30px',
-            border: 'none',
-            cursor: 'pointer',
-            fontWeight: '700'
+            width: '120px',
+            padding: '8px 12px',
+            fontSize: '13px',
           }}
-  >
+        >
           ← Kembali
-        </button>
-        <h2 style={{ fontSize: '18px', fontWeight: 800 }}>Pilih Huruf</h2>
-        <p  style={{ fontSize: '13px', color: 'var(--muted)', marginTop: 2 }}>
+        </Tombol>
+      </div>
+        <h1 style={{ fontSize: '35px', fontWeight: 800, textAlign: 'center'}}>Pilih Huruf</h1>
+        <p  style={{ fontSize: '17px', color: 'var(--muted)', marginTop: 2, textAlign: 'center'}}>
           Tap huruf yang ingin dipelajari
         </p>
       </div>
 
       {/* Grid huruf */}
       <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(5,1fr)',
-        gap: '8px', padding: '16px', overflowY: 'auto', flex: 1,
+        display: 'grid', gridTemplateColumns: 'repeat(4,1fr)',
+        gap: '10px', padding: '16px', overflowY: 'auto', flex: 1,
+        minHeight: 0,
       }}>
         {HURUF.map(h => {
           const dipilih  = hurufDipilih?.arab === h.arab;
@@ -59,7 +61,8 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
                 gap         : '3px',
                 position    : 'relative',
                 boxShadow   : dipilih ? '0 0 0 2px rgba(212,134,10,.2)' : 'none',
-                transition  : 'all .15s',
+                transform  : dipilih ? 'scale(1.08)' : 'scale(1)',
+                transition : 'all 0.15s',
               }}
             >
               {/* Bintang progres */}
@@ -72,7 +75,7 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
                 </span>
               )}
               <span style={{
-                fontFamily: 'var(--font-arab)', fontSize: '28px',
+                fontFamily: 'var(--font-arab)', fontSize: 'clamp(36px,7vw,50px)',
                 lineHeight: 1.1, color: dipilih ? 'var(--aksen)' : 'var(--teks)',
               }}>
                 {h.arab}
@@ -92,14 +95,66 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       }}>
         <Tombol
           blok
-          disabled = {!hurufDipilih}
-          onClick  = {onMulai}
+          onClick={() => {
+            if (!hurufDipilih) {
+              setShowModal(true);
+              return;
+            }
+            onMulai();
+          }}
         >
           {hurufDipilih
             ? `Belajar ${hurufDipilih.arab} (${hurufDipilih.latin}) →`
             : 'Pilih huruf dulu →'}
         </Tombol>
       </div>
+      {showModal && (
+  <div
+    style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(0,0,0,0.4)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 999,
+    }}
+  >
+    <div
+      style={{
+        background: 'white',
+        padding: '24px',
+        borderRadius: '16px',
+        width: '320px',
+        textAlign: 'center',
+        boxShadow: '0 8px 24px rgba(0,0,0,.2)',
+      }}
+    >
+      <h3 style={{ marginBottom: '12px' }}>
+        Pilih Huruf Dulu
+      </h3>
+
+      <p style={{ marginBottom: '20px' }}>
+        Silakan pilih salah satu huruf hijaiyah sebelum memulai belajar.
+      </p>
+
+      <button
+        onClick={() => setShowModal(false)}
+        style={{
+          padding: '10px 20px',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          background: 'var(--aksen)',
+          color: 'green',
+          fontWeight: '700',
+        }}
+      >
+        OK
+      </button>
+    </div>
+  </div>
+)}
     </div>
   );
 }

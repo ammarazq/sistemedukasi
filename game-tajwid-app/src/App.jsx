@@ -63,7 +63,7 @@ export default function App() {
         width: '100%',
         minHeight: '100vh',
         position: 'relative',
-        overflow: 'hidden',
+        overflowX: 'hidden',
         background:
           'linear-gradient(160deg,#a8eddc 0%,#56c8a8 30%,#2db891 60%,#0f8a70 100%)',
       }}

@@ -96,6 +96,7 @@ export default function App() {
       {layar === 'game' && (
         <Gameplay
           huruf={game.hurufDipilih}
+          hurufTampil={game.hurufTampil}
           soalAktif={game.soalAktif}
           soalIndex={game.soalIndex}
           totalSoal={game.totalSoal}

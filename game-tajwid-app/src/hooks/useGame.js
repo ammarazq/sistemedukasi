@@ -20,12 +20,35 @@ function acakSoal(jumlah) {
   return [...SOAL].sort(() => Math.random() - 0.5).slice(0, jumlah);
 }
 
+function getHurufBerharakat(huruf, gesture) {
+  switch (gesture) {
+    case 'up':
+      return huruf + 'َ'; // fathah
+
+    case 'down':
+      return huruf + 'ِ'; // kasrah
+
+    case 'right':
+      return huruf + 'ُ'; // dhomah
+
+    case 'up-long':
+      return huruf + 'َا'; // mad fathah
+
+    case 'down-long':
+      return huruf + 'ِي'; // mad kasrah
+
+    default:
+      return huruf;
+  }
+}
+
 export function useGame() {
   // ── Navigasi ──
   const [layar, setLayar] = useState('intro'); // 'intro'|'pilih'|'game'|'hasil'
 
   // ── Pilih Huruf ──
   const [hurufDipilih, setHurufDipilih] = useState(null);
+  const [hurufTampil, setHurufTampil] = useState('');
 
   // ── Sesi Game ──
   const [soalSesi,   setSoalSesi]   = useState([]);
@@ -47,17 +70,22 @@ export function useGame() {
   // AKSI: MULAI SESI
   // ─────────────────────────────────────
   const mulaiSesi = useCallback(() => {
-    if (!hurufDipilih) return;
-    const soalBaru = acakSoal(CONFIG.jumlahSoal);
-    setSoalSesi(soalBaru);
-    setSoalIndex(0);
-    setSkor(0);
-    setJumlahBenar(0);
-    setJumlahSalah(0);
-    setFeedback(null);
-    setTerkunci(false);
-    setLayar('game');
-  }, [hurufDipilih]);
+  if (!hurufDipilih) return;
+
+  const soalBaru = acakSoal(CONFIG.jumlahSoal);
+
+  setSoalSesi(soalBaru);
+  setSoalIndex(0);
+  setSkor(0);
+  setJumlahBenar(0);
+  setJumlahSalah(0);
+  setFeedback(null);
+  setTerkunci(false);
+
+  setHurufTampil(hurufDipilih.arab); // tambah
+
+  setLayar('game');
+}, [hurufDipilih]);
 
   // ─────────────────────────────────────
   // AKSI: CEK JAWABAN (dipanggil dari useGesture)
@@ -69,20 +97,26 @@ export function useGame() {
     const benar = arahGestur === soalAktif.gesture;
 
     if (benar) {
-      setSkor(s => s + soalAktif.poin);
-      setJumlahBenar(n => n + 1);
-      mainkanSfx('benar');
-      mainkanAudio(soalAktif.audio);
-      setFeedback({ status: 'benar', teks: 'Benar! 🎉', sub: `+${soalAktif.poin} poin` });
-    } else {
-      setJumlahSalah(n => n + 1);
-      mainkanSfx('salah');
-      setFeedback({
-        status: 'salah',
-        teks  : 'Kurang tepat',
-        sub   : `Yang benar: ${soalAktif.panah} ${soalAktif.label}`,
-      });
-    }
+
+  // tampilkan harakat pada huruf
+  setHurufTampil(
+    getHurufBerharakat(
+      hurufDipilih.arab,
+      soalAktif.gesture
+    )
+  );
+
+  setSkor(s => s + soalAktif.poin);
+  setJumlahBenar(n => n + 1);
+  mainkanSfx('benar');
+  mainkanAudio(soalAktif.audio);
+
+  setFeedback({
+    status: 'benar',
+    teks: 'Benar! 🎉',
+    sub: `+${soalAktif.poin} poin`
+  });
+}
 
     // Tunda ke soal berikutnya
     setTimeout(() => {
@@ -105,6 +139,7 @@ export function useGame() {
         }
         return next;
       });
+      setHurufTampil(hurufDipilih.arab); // reset tampilan huruf
       setTerkunci(false);
     }, CONFIG.durasiKunci);
 
@@ -129,7 +164,7 @@ export function useGame() {
 
   return {
     // State
-    layar, hurufDipilih, soalAktif, soalIndex, totalSoal,
+    layar, hurufDipilih, hurufTampil, soalAktif, soalIndex, totalSoal,
     skor, jumlahBenar, jumlahSalah, feedback, terkunci, progPersen,
     hasilAkhir,
     // Aksi

@@ -16,7 +16,7 @@ const REF_GESTUR = [
 ];
 
 export default function Game({
-  huruf, soalAktif, soalIndex, totalSoal,
+  huruf, hurufTampil, soalAktif, soalIndex, totalSoal,
   skor, feedback, terkunci, progPersen,
   onGesture,
 }) {
@@ -74,12 +74,31 @@ export default function Game({
         </Kartu>
 
         <div style={{
-          fontFamily: 'var(--font-arab)', fontSize: '100px',
-          lineHeight: 1.2, textAlign: 'center', minHeight: '120px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          transition: 'color .25s',
-        }}>
-          {huruf?.arab}
+  fontFamily: 'var(--font-arab)',
+  fontSize: '100px',
+  lineHeight: 1.2,
+  textAlign: 'center',
+  minHeight: '120px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  color:
+    feedback?.status === 'benar'
+      ? '#2E7D32'
+      : '#D4A017',
+
+  transform:
+    feedback?.status === 'benar'
+      ? 'scale(1.15)'
+      : 'scale(1)',
+
+  transition: 'all .3s ease',
+
+  textShadow:
+    '0 0 15px rgba(52,152,219,.4)',
+}}>
+          {hurufTampil || huruf?.arab}
         </div>
 
         <div style={{ fontSize: '13px', color: 'var(--muted)', fontStyle: 'italic' }}>

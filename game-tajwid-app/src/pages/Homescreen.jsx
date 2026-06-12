@@ -341,7 +341,7 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
             lineHeight: 1.1,
           }}
         >
-          Hara<span style={{ color: '#0d7a50' }}>kat</span>Go
+          Game<span style={{ color: '#0d7a50' }}>Land</span>
         </h1>
         <p style={{
           fontSize: 'clamp(1.5rem, 2vw, 1.3rem)',
@@ -349,7 +349,7 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
           margin: '0.5rem 0 0 0',
           fontWeight: '600'
         }}>
-          Belajar Harakat menjadi Menyenangkan
+          Belajar <span style={{ color: '#0d7a50' }}>Harakat</span> menjadi Menyenangkan
         </p>
       </div>
 

@@ -113,19 +113,72 @@ export default function Game({
         />
 
         {/* Referensi gesture */}
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
-          {REF_GESTUR.map(r => (
-            <div key={r.g} style={{
-              background   : r.g === soalAktif?.gesture ? '#FFF3D4' : 'var(--card)',
-              border       : `1.5px solid ${r.g === soalAktif?.gesture ? 'var(--aksen)' : 'var(--border)'}`,
-              color        : r.g === soalAktif?.gesture ? 'var(--aksen)' : 'var(--teks)',
-              borderRadius : '50px', padding: '5px 12px',
-              fontSize: '12px', fontWeight: 600,
-              display: 'flex', alignItems: 'center', gap: '5px',
-            }}>
-              <span>{r.panah}</span>{r.label}
-            </div>
-          ))}
+        <div
+          style={{
+            display: 'flex',
+            gap: '10px',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            width: '100%',
+          }}
+        >
+          {REF_GESTUR.map((r) => {
+            const aktif = r.g === soalAktif?.gesture;
+
+            return (
+              <div
+                key={r.g}
+                style={{
+                  width: '80px',
+                  padding: '10px',
+                  borderRadius: '16px',
+
+                  background: aktif
+                    ? 'linear-gradient(135deg,#FFD76A,#F4A623)'
+                    : '#fff',
+
+                  border: aktif
+                    ? '3px solid #F4A623'
+                    : '2px solid #E5E7EB',
+
+                  boxShadow: aktif
+                    ? '0 6px 16px rgba(244,166,35,.35)'
+                    : '0 3px 10px rgba(0,0,0,.08)',
+
+                  transform: aktif
+                    ? 'translateY(-4px) scale(1.05)'
+                    : 'translateY(0)',
+
+                  transition: 'all .25s ease',
+
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  cursor: 'default',
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: '24px',
+                    fontWeight: 800,
+                    marginBottom: '4px',
+                  }}
+                >
+                  {r.panah}
+                </div>
+
+                <div
+                  style={{
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    textAlign: 'center',
+                  }}
+                >
+                  {r.label}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

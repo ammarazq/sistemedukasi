@@ -47,8 +47,8 @@ export default function TentangPage({ onBack }) {
       {/* Description */}
       <p
         style={{
-          color: '#e0f7f0',
-          fontSize: 'clamp(12px,2vw,15px)',
+          color: '#f7f4e0',
+          fontSize: 'clamp(20px,2vw,15px)',
           lineHeight: 1.7,
           marginBottom: 16,
           fontWeight: 600,
@@ -85,7 +85,7 @@ export default function TentangPage({ onBack }) {
         ))}
       </div>
 
-      <p style={{ fontSize: 'clamp(10px,1.6vw,12px)', color: '#a8eddc', fontWeight: 600, letterSpacing: '0.06em' }}>
+      <p style={{ fontSize: 'clamp(16px,1.6vw,12px)', color: '#a8eddc', fontWeight: 600, letterSpacing: '0.06em' }}>
         Dibuat dengan ❤️ untuk umat Islam
       </p>
     </div>

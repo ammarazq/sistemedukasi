@@ -116,6 +116,18 @@ export function useGame() {
     teks: 'Benar! 🎉',
     sub: `+${soalAktif.poin} poin`
   });
+}else {
+
+  setJumlahSalah(n => n + 1);
+
+  mainkanSfx('salah');
+
+  setFeedback({
+    status: 'salah',
+    teks: 'Kurang tepat',
+    sub: `Yang benar: ${soalAktif.panah} ${soalAktif.label}`,
+  });
+
 }
 
     // Tunda ke soal berikutnya
@@ -155,12 +167,21 @@ export function useGame() {
   // HITUNG HASIL AKHIR
   // ─────────────────────────────────────
   const hasilAkhir = (() => {
-    const persen  = totalSoal
-      ? Math.round((jumlahBenar / totalSoal) * 100)
-      : 0;
-    const bintang = persen >= 80 ? 3 : persen >= 50 ? 2 : 1;
-    return { persen, bintang, skor, jumlahBenar, jumlahSalah, totalSoal };
-  })();
+  const persen = totalSoal
+    ? Math.round((jumlahBenar / totalSoal) * 100)
+    : 0;
+
+  const bintang = persen >= 80 ? 3 : persen >= 50 ? 2 : 1;
+
+  return {
+    persen,
+    bintang,
+    skor,
+    jumlahBenar,
+    jumlahSalah: totalSoal - jumlahBenar,
+    totalSoal,
+  };
+})();
 
   return {
     // State

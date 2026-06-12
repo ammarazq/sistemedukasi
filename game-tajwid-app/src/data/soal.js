@@ -55,12 +55,12 @@ export const SOAL = [
     audio   : '/audio/mad-kasroh.mp3',
     poin    : 20,
   },
-    {
-    id      : 'jawaban_benar',
-    label   : 'Jawaban benar',
-    audio   : '/src/audio/correct.mp3',
+  //   {
+  //   id      : 'jawaban_benar',
+  //   label   : 'Jawaban benar',
+  //   audio   : '/src/audio/correct.mp3',
 
-  },
+  // },
 ];
 
 export const CONFIG = {

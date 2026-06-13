@@ -22,7 +22,8 @@ export default function App() {
   }, [game.layar]);
 
   const handleMulai = () => {
-    setLayar('pilih');
+  game.setHurufDipilih(null);
+  setLayar('pilih');
   };
 
   const handlePanduan = () => {
@@ -57,6 +58,15 @@ export default function App() {
     setLayar('pilih');
   };
 
+  const resetDanKeMenu = () => {
+  game.setHurufDipilih(null);
+  setLayar('menu');
+  };
+  const handleBackToMenu = () => {
+    game.setHurufDipilih(null);
+    setLayar('menu');
+  };
+
   return (
     <div
       style={{
@@ -81,7 +91,7 @@ export default function App() {
       )}
 
       {layar === 'tentang' && (
-        <About onBack={() => setLayar('menu')} />
+        <About onBack={resetDanKeMenu} />
       )}
 
       {layar === 'pilih' && (
@@ -89,9 +99,9 @@ export default function App() {
           hurufDipilih={game.hurufDipilih}
           onPilih={game.setHurufDipilih}
           onMulai={handlePilihMulai}
-          onBack={() => setLayar('menu')}
+          onBack={resetDanKeMenu}
         />
-      )}
+)}
 
       {layar === 'game' && (
         <Gameplay
@@ -114,7 +124,7 @@ export default function App() {
           huruf={game.hurufDipilih}
           onUlang={handleUlang}
           onGantiHuruf={handleGantiHuruf}
-          onHome={() => setLayar('menu')}
+          onHome={resetDanKeMenu}
         />
       )}
     </div>

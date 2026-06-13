@@ -209,6 +209,7 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
+        padding: '20px',
       }}
     >
 
@@ -329,11 +330,11 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
         ))}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', fontFamily: "'Nunito', sans-serif" }}>
-      <div style={{ textAlign: 'center', marginBottom: '4rem', marginTop: '-5rem', animation: 'fadeDown 0.7s ease both' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem,5vw,4rem)', marginTop: 'clamp(-2rem,-3vw,-4rem)', animation: 'fadeDown 0.7s ease both' }}>
         <h1
           style={{
             fontFamily: "'Cinzel Decorative', serif",
-            fontSize: 'clamp(80px,7.5vw,100px)',
+            fontSize: 'clamp(48px,12vw,100px)',
             color: '#1a4d35',
             textShadow: '0 2px 0 rgba(255,255,255,0.35), 0 4px 16px rgba(0,80,40,0.2)',
             textAlign: 'center',
@@ -344,7 +345,7 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
           Game<span style={{ color: '#0d7a50' }}>Land</span>
         </h1>
         <p style={{
-          fontSize: 'clamp(1.5rem, 2vw, 1.3rem)',
+          fontSize: 'clamp(1rem, 3vw, 1.5rem)',
           color: '#1B4332',
           margin: '0.5rem 0 0 0',
           fontWeight: '600'

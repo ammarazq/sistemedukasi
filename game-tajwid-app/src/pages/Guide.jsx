@@ -33,6 +33,7 @@ export default function PanduanPage({ onBack }) {
         width: '100%',
         animation: 'fadeDown 0.6s ease both',
         overflowY: 'auto',
+        overflowX: 'auto',
         height: '100%',
         maxWidth: 'none',
         maxHeight: 'none',
@@ -99,48 +100,50 @@ export default function PanduanPage({ onBack }) {
       ))}
 
       {/* Harakat table */}
-      <table style={{ width: '100%', marginTop: 14, borderCollapse: 'separate', borderSpacing: 6 }}>
-        <thead>
-          <tr>
-            {HARAKAT_TABLE.map((h, i) => (
-              <th
-                key={i}
-                style={{
-                  fontFamily: "'Amiri', serif",
-                  fontSize: 'clamp(30px,4.5vw,30px)',
-                  color: '#fef3c7',
-                  textAlign: 'center',
-                  padding: '6px 4px',
-                  background: 'rgba(0,0,0,0.2)',
-                  borderRadius: 8,
-                }}
-              >
-                {h.arabic}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {HARAKAT_TABLE.map((h, i) => (
-              <td
-                key={i}
-                style={{
-                  fontSize: 'clamp(15px,2.5vw,15px)',
-                  color: '#e0f7f0',
-                  textAlign: 'center',
-                  padding: '4px 2px',
-                  background: 'rgba(255,255,255,0.1)',
-                  borderRadius: 8,
-                  fontWeight: 600,
-                }}
-              >
-                {h.latin}
-              </td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
+      <div style={{ width: '100%', overflowX: 'auto', marginTop: 14}}>
+        <table style={{ width: '700px', borderCollapse: 'separate', borderSpacing: 6 }}>
+          <thead>
+            <tr>
+              {HARAKAT_TABLE.map((h, i) => (
+                <th
+                  key={i}
+                  style={{
+                    fontFamily: "'Amiri', serif",
+                    fontSize: 'clamp(22px,4.5vw,30px)',
+                    color: '#fef3c7',
+                    textAlign: 'center',
+                    padding: '6px 4px',
+                    background: 'rgba(0,0,0,0.2)',
+                    borderRadius: 8,
+                  }}
+                >
+                  {h.arabic}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {HARAKAT_TABLE.map((h, i) => (
+                <td
+                  key={i}
+                  style={{
+                    fontSize: 'clamp(11px,2.5vw,15px)',
+                    color: '#e0f7f0',
+                    textAlign: 'center',
+                    padding: '4px 2px',
+                    background: 'rgba(255,255,255,0.1)',
+                    borderRadius: 8,
+                    fontWeight: 600,
+                  }}
+                >
+                  {h.latin}
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

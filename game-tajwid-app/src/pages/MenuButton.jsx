@@ -26,13 +26,13 @@ export default function MenuButton({ label, children, onClick, gold = false, del
         onClick={onClick}
         style={{
           position: 'relative',
-          width: 'clamp(150px,36vw,240px)',
-          padding: 'clamp(9px,1.8vh,14px) 32px',
+          width: 'min(280px, 80vw)',
+          padding: '12px 20px',
           border: 'none',
           background: 'transparent',
           cursor: 'pointer',
           fontFamily: "'Nunito', sans-serif",
-          fontSize: 'clamp(12px,2.2vw,16px)',
+          fontSize: 'clamp(14px,2.2vw,18px)',
           fontWeight: 700,
           letterSpacing: '0.12em',
           textTransform: 'uppercase',

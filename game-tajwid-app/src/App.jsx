@@ -55,6 +55,7 @@ export default function App() {
   };
 
   const handleGantiHuruf = () => {
+    game.setHurufDipilih(null);
     setLayar('pilih');
   };
 

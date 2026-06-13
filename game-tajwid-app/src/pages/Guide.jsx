@@ -1,4 +1,5 @@
 import React from 'react';
+import Tombol from '../pages/MenuButton';
 
 const HARAKAT_TABLE = [
   { arabic: 'بَ', latin: 'ba' },
@@ -39,8 +40,18 @@ export default function PanduanPage({ onBack }) {
       }}
     >
       {/* Back */}
-      <button onClick={onBack} style={backBtnStyle}>← Kembali</button>
-
+      <div style={{ maxWidth: '120px', marginBottom: '12px' }}>
+        <Tombol
+          onClick={onBack}
+          style={{
+            width: '120px',
+            padding: '8px 12px',
+            fontSize: '13px',
+          }}
+        >
+          ← Kembali
+        </Tombol>
+      </div>
       {/* Title */}
       <h2
         style={{

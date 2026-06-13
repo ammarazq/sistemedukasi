@@ -1,4 +1,5 @@
 import React from 'react';
+import Tombol from '../pages/MenuButton';
 
 const FEATURES = [
   { icon: '🎮', label: 'Gamifikasi' },
@@ -26,7 +27,18 @@ export default function TentangPage({ onBack }) {
       }}
     >
       {/* Back */}
-      <button onClick={onBack} style={backBtnStyle}>← Kembali</button>
+      <div style={{ maxWidth: '120px', marginBottom: '12px' }}>
+        <Tombol
+          onClick={onBack}
+          style={{
+            width: '120px',
+            padding: '8px 12px',
+            fontSize: '13px',
+          }}
+        >
+          ← Kembali
+        </Tombol>
+      </div>
 
       {/* Logo */}
       <h2

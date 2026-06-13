@@ -209,7 +209,7 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
-        padding: '20px',
+        padding:'20px',
       }}
     >
 

@@ -34,18 +34,19 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       <div style={{ textAlign: 'center' }}>
   <div
     style={{
-      fontSize: '60px',
+      fontSize: '40px',
       animation: 'bounce 2s infinite'
     }}
   >
-    📖✨
+     ༺  ﷽ ༻  <br />
+    📖🧕🏻
   </div>
 
   <h1
     style={{
       fontSize: '35px',
       fontWeight: 800,
-      color: '#0f8a70'
+      color: '#FFC107'
     }}
   >
     Pilih Huruf Hijaiyah
@@ -144,45 +145,91 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
     style={{
       position: 'fixed',
       inset: 0,
-      background: 'rgba(0,0,0,0.4)',
+      background: 'rgba(0,0,0,0.55)',
+      backdropFilter: 'blur(4px)',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: 999,
+      zIndex: 9999,
+      animation: 'fadeIn .25s ease',
     }}
   >
     <div
       style={{
-        background: 'white',
-        padding: '24px',
-        borderRadius: '16px',
-        width: '320px',
+        width: '90%',
+        maxWidth: '420px',
+        padding: '28px',
+        borderRadius: '24px',
+
+        background:
+          'linear-gradient(180deg,#FFFDF7 0%,#FFF4D6 100%)',
+
+        boxShadow:
+          '0 15px 40px rgba(0,0,0,.25)',
+
         textAlign: 'center',
-        boxShadow: '0 8px 24px rgba(0,0,0,.2)',
+        animation: 'zoomIn .25s ease',
       }}
     >
-      <h3 style={{ marginBottom: '12px' }}>
-        Pilih Huruf Dulu
-      </h3>
-
-      <p style={{ marginBottom: '20px' }}>
-        Silakan pilih salah satu huruf hijaiyah sebelum memulai belajar.
-      </p>
-
-      <button
-        onClick={() => setShowModal(false)}
+      {/* Icon */}
+      <div
         style={{
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          background: 'var(--aksen)',
-          color: 'green',
-          fontWeight: '700',
+          fontSize: '56px',
+          marginBottom: '10px',
         }}
       >
-        OK
-      </button>
+        📚✨
+      </div>
+
+      {/* Title */}
+      <h2
+        style={{
+          margin: 0,
+          fontSize: '30px',
+          fontWeight: 800,
+          color: '#0f8a70',
+          marginBottom: '12px',
+        }}
+      >
+        Pilih Huruf Dulu
+      </h2>
+
+      {/* Description */}
+      <p
+        style={{
+          fontSize: '17px',
+          lineHeight: 1.6,
+          color: '#555',
+          marginBottom: '24px',
+        }}
+      >
+        Silakan pilih salah satu
+        <strong style={{ color: '#0f8a70' }}>
+          {' '}huruf hijaiyah{' '}
+        </strong>
+        sebelum memulai belajar.
+      </p>
+
+      {/* Button */}
+      <div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  }}
+>
+  <Tombol
+    onClick={() => setShowModal(false)}
+    gold
+    style={{
+      width: '180px',
+      margin: '0 auto',
+    }}
+  >
+    Mengerti
+  </Tombol>
+</div>
     </div>
   </div>
 )}

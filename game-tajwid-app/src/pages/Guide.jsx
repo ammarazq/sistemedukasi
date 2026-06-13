@@ -45,7 +45,7 @@ export default function PanduanPage({ onBack }) {
       <h2
         style={{
           fontFamily: "'Cinzel Decorative', serif",
-          fontSize: 'clamp(18px,4vw,30px)',
+          fontSize: 'clamp(40px,8vw,50px)',
           color: '#fff8e0',
           textAlign: 'center',
           marginBottom: 14,
@@ -81,7 +81,7 @@ export default function PanduanPage({ onBack }) {
           >
             {s.num}
           </span>
-          <p style={{ color: '#fff', fontSize: 'clamp(12px,2vw,15px)', lineHeight: 1.55, fontWeight: 600 }}>
+          <p style={{ color: '#fff', fontSize: 'clamp(18px,4vw,20px)', lineHeight: 1.55, fontWeight: 600 }}>
             {s.text}
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function PanduanPage({ onBack }) {
                 key={i}
                 style={{
                   fontFamily: "'Amiri', serif",
-                  fontSize: 'clamp(18px,3.5vw,26px)',
+                  fontSize: 'clamp(30px,4.5vw,30px)',
                   color: '#fef3c7',
                   textAlign: 'center',
                   padding: '6px 4px',
@@ -115,7 +115,7 @@ export default function PanduanPage({ onBack }) {
               <td
                 key={i}
                 style={{
-                  fontSize: 'clamp(9px,1.5vw,12px)',
+                  fontSize: 'clamp(15px,2.5vw,15px)',
                   color: '#e0f7f0',
                   textAlign: 'center',
                   padding: '4px 2px',

@@ -32,13 +32,13 @@ export default function TentangPage({ onBack }) {
       <h2
         style={{
           fontFamily: "'Cinzel Decorative', serif",
-          fontSize: 'clamp(22px,5vw,40px)',
+          fontSize: 'clamp(50px,8vw,72px)',
           color: '#fef3c7',
           textShadow: '0 2px 8px rgba(0,50,30,0.3)',
           marginBottom: 4,
         }}
       >
-        Hara<span style={{ color: '#a8eddc' }}>kat</span>Go
+        Game<span style={{ color: '#a8eddc' }}>Land</span>
       </h2>
       <p style={{ fontSize: 12, color: '#a8eddc', fontWeight: 600, letterSpacing: '0.1em', marginBottom: 16 }}>
         VERSI 1.0
@@ -78,14 +78,14 @@ export default function TentangPage({ onBack }) {
             }}
           >
             <div style={{ fontSize: 'clamp(18px,3.5vw,26px)', marginBottom: 4 }}>{f.icon}</div>
-            <div style={{ color: '#fef3c7', fontSize: 'clamp(10px,1.7vw,13px)', fontWeight: 700 }}>
+            <div style={{ color: '#fef3c7', fontSize: 'clamp(15px,2.2vw,18px)', fontWeight: 800 }}>
               {f.label}
             </div>
           </div>
         ))}
       </div>
 
-      <p style={{ fontSize: 'clamp(16px,1.6vw,12px)', color: '#a8eddc', fontWeight: 600, letterSpacing: '0.06em' }}>
+      <p style={{ fontSize: 'clamp(20px,1.6vw,12px)', color: '#a8eddc', fontWeight: 600, letterSpacing: '0.06em' }}>
         Dibuat dengan ❤️ untuk umat Islam
       </p>
     </div>

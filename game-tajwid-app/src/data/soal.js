@@ -65,7 +65,8 @@ export const SOAL = [
 
 export const CONFIG = {
   jumlahSoal  : 5,
-  jarakMin    : 25,   // px — gesture terlalu pendek, diabaikan
-  jarakMad    : 70,   // px — threshold untuk harakat panjang
-  durasiKunci : 1400, // ms — jeda sebelum soal berikutnya
+  jarakMin    : 15,   // px — gesture terlalu pendek, diabaikan
+  jarakPendek : 35,   // px — threshold untuk harakat pendek
+  jarakMad    : 55,   // px — threshold untuk harakat panjang
+  durasiKunci : 800, // ms — jeda sebelum soal berikutnya
 };

@@ -22,24 +22,35 @@ export function useGesture({ onGesture, aktif = true }) {
   const [jarakLive, setJarakLive] = useState(0);
 
   const hitung = useCallback((endX, endY) => {
-    const dx   = endX - startX.current;
-    const dy   = endY - startY.current;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < CONFIG.jarakMin) return;
+    const dx = endX - startX.current;
+    const dy = endY - startY.current;
 
-    const sudut = Math.atan2(Math.abs(dy), Math.abs(dx)) * (180 / Math.PI);
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < CONFIG.jarakPendek) return;
+
     const panjang = dist >= CONFIG.jarakMad;
 
+    const absX = Math.abs(dx);
+    const absY = Math.abs(dy);
+
     let arah;
-    if (sudut >= 40) {
-      if (dy < 0) arah = panjang ? 'up-long'   : 'up';
-      else        arah = panjang ? 'down-long'  : 'down';
-    } else {
+
+    // lebih toleran untuk geser kanan
+    if (absX > absY * 0.8) {
       arah = dx > 0 ? 'right' : 'left';
+    } else {
+      if (dy < 0) {
+        arah = panjang ? 'up-long' : 'up';
+      } else {
+        arah = panjang ? 'down-long' : 'down';
+      }
     }
 
     onGesture(arah);
+
     setJarakLive(0);
+
   }, [onGesture]);
 
   useEffect(() => {

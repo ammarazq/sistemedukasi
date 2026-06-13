@@ -18,8 +18,41 @@ import { CONFIG } from '../data/soal';
 
 export default function ZonaGesture({ soal, feedback, jarakLive, gestureRef }) {
   const isMad    = soal?.gesture === 'up-long' || soal?.gesture === 'down-long';
-  const persen   = Math.min(100, Math.round((jarakLive / CONFIG.jarakMad) * 100));
+  // const persen   = Math.min(100, Math.round((jarakLive / CONFIG.jarakMad) * 100));
+  const targetJarak = isMad
+  ? CONFIG.jarakMad
+  : CONFIG.jarakPendek;
+
+const persen = Math.min(
+  100,
+  Math.round(
+    (jarakLive / targetJarak) * 100
+  )
+);
   const barWarna = persen >= 100 ? 'var(--aksen2)' : 'var(--aksen)';
+
+const namaHarakat = {
+  up: 'Fathah',
+  down: 'Kasrah',
+  right: 'Dhomah',
+  'up-long': 'Mad',
+  'down-long': 'Mad',
+};
+
+const teksProgress =
+  isMad
+    ? (
+        persen >= 100
+          ? '✓ Cukup untuk Mad'
+          : persen > 40
+            ? 'Terus geser...'
+            : ''
+      )
+    : (
+        jarakLive >= CONFIG.jarakPendek
+          ? `✓ Cukup untuk ${namaHarakat[soal?.gesture]}`
+          : ''
+      );
 
   return (
     <div
@@ -29,7 +62,9 @@ export default function ZonaGesture({ soal, feedback, jarakLive, gestureRef }) {
         background   : 'var(--card)',
         borderRadius : 'var(--radius)',
         border       : `2px dashed ${feedback ? 'transparent' : 'var(--border)'}`,
-        height       : '200px',
+        height       : '30vh',
+        minHeight    : '220px',
+        maxHeight    : '320px',
         display      : 'flex',
         alignItems   : 'center',
         justifyContent: 'center',
@@ -43,14 +78,31 @@ export default function ZonaGesture({ soal, feedback, jarakLive, gestureRef }) {
       {/* Garis threshold Mad */}
       {isMad && (
         <>
-          <div style={garisThreshold('bottom', 70)} aria-hidden><span style={garisLabel}>MAD ↑</span></div>
-          <div style={garisThreshold('top',    70)} aria-hidden><span style={garisLabel}>MAD ↓</span></div>
+          <div style={garisThreshold('bottom', CONFIG.jarakMad)} aria-hidden>
+            <span style={garisLabel}>MAD ↑</span>
+          </div>
+
+          <div style={garisThreshold('top', CONFIG.jarakMad)} aria-hidden>
+            <span style={garisLabel}>MAD ↓</span>
+          </div>
         </>
       )}
 
       {/* Panduan panah */}
       {!feedback && (
         <div style={{ textAlign: 'center', pointerEvents: 'none' }}>
+          {teksProgress && (
+  <div
+    style={{
+      marginTop: '12px',
+      fontSize: '18px',
+      fontWeight: 800,
+      color: 'var(--aksen2)',
+    }}
+  >
+    {teksProgress}
+  </div>
+)}
           <div style={{
             fontSize  : '36px',
             color     : 'var(--aksen)',
@@ -66,21 +118,39 @@ export default function ZonaGesture({ soal, feedback, jarakLive, gestureRef }) {
 
       {/* Progress bar jarak */}
       <div style={{
-        position: 'absolute', bottom: 10, left: 14, right: 14,
+        position: 'absolute', bottom: 45, left: 14, right: 14,
       }}>
         <div style={{
-          fontSize: '10px', fontWeight: 700,
-          color: 'var(--muted)', textAlign: 'right',
-          marginBottom: 3, minHeight: 14,
+          fontSize: '12px',
+          fontWeight: 800,
+          color: persen >= 100
+            ? 'var(--aksen2)'
+            : 'var(--muted)',
+          textAlign: 'right',
+          marginBottom: 3,
+          minHeight: 16,
         }}>
-          {persen >= 100 ? '✓ cukup untuk Mad!' : persen > 40 ? 'terus geser...' : ''}
+          {/* {persen >= 100 ? '✓ cukup untuk Mad!' : persen > 40 ? 'terus geser...' : ''} */}
+          <div
+            style={{
+              fontSize: '15px',
+              fontWeight: 800,
+              color: persen >= 100
+                ? 'var(--aksen2)'
+                : 'var(--aksen)',
+              textAlign: 'center',
+              marginBottom: '8px',
+            }}
+          >
+            {/* {teksProgress} */}
+          </div>
         </div>
-        <div style={{ height: 6, background: 'var(--bg)', borderRadius: 3, overflow: 'hidden' }}>
+        <div style={{ height: 10, background: 'var(--bg)', borderRadius: 999, overflow: 'hidden' }}>
           <div style={{
             height     : '100%',
             width      : `${persen}%`,
             background : barWarna,
-            borderRadius: 3,
+            borderRadius: 999,
             transition : 'width .05s linear, background .2s',
           }} />
         </div>
@@ -95,6 +165,7 @@ export default function ZonaGesture({ soal, feedback, jarakLive, gestureRef }) {
           flexDirection : 'column',
           alignItems    : 'center',
           justifyContent: 'center',
+          paddingTop     : '60px',
           borderRadius  : 'calc(var(--radius) - 2px)',
           background    : feedback.status === 'benar'
             ? 'rgba(26,127,90,0.93)'

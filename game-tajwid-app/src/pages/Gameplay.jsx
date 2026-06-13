@@ -29,6 +29,7 @@ export default function Game({
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg)' }}>
       {/* Header */}
       <div style={{
+        
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '14px 16px', background: 'var(--card)',
         boxShadow: '0 2px 8px rgba(44,24,16,.06)',
@@ -62,23 +63,23 @@ export default function Game({
       {/* Body */}
       <div style={{
         flex: 1, display: 'flex', flexDirection: 'column',
-        alignItems: 'center', padding: '16px', gap: '14px',
+        alignItems: 'center', padding: '12px', gap: '8px',
       }}>
         <Kartu style={{ width: '100%', textAlign: 'center' }}>
-          <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 600, marginBottom: 4 }}>
+          <div style={{ fontSize: '20px', color: 'var(--muted)', fontWeight: 600, marginBottom: 4 }}>
             Gestur untuk harakat:
           </div>
-          <div style={{ fontSize: '16px', fontWeight: 800 }}>
+          <div style={{ fontSize: '20px', fontWeight: 800 }}>
             {soalAktif?.label}
           </div>
         </Kartu>
 
         <div style={{
   fontFamily: 'var(--font-arab)',
-  fontSize: '100px',
+  fontSize: '80px',
   lineHeight: 1.2,
   textAlign: 'center',
-  minHeight: '120px',
+  minHeight: '90px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -105,12 +106,14 @@ export default function Game({
           {soalAktif?.hint}
         </div>
 
-        <ZonaGesture
-          soal       = {soalAktif}
-          feedback   = {feedback}
-          jarakLive  = {jarakLive}
-          gestureRef = {gestureRef}
-        />
+        <div style={{ width: '100%', marginBottom: '50px' }}>
+      <ZonaGesture
+        soal       = {soalAktif}
+        feedback   = {feedback}
+        jarakLive  = {jarakLive}
+        gestureRef = {gestureRef}
+      />
+    </div>
 
         {/* Referensi gesture */}
         <div
@@ -119,7 +122,8 @@ export default function Game({
             gap: '10px',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            width: '100%',
+            width: '80%',
+            marginTop: '-55px',
           }}
         >
           {REF_GESTUR.map((r) => {

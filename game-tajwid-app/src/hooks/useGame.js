@@ -160,9 +160,9 @@ export function useGame() {
           const bintang = persen >= 80 ? 3 : persen >= 50 ? 2 : 1;
           simpanProgres(hurufDipilih.arab, bintang);
 
-          if (bintang === 3)      mainkanSfx('levelup');
-          else if (bintang >= 2)  mainkanSfx('benar');
-
+          if (bintang >= 2) {
+            mainkanSfx('menang');
+          }
           setLayar('hasil');
         }
         return next;

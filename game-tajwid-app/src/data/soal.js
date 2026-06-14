@@ -55,6 +55,16 @@ export const SOAL = [
     audio   : '/audio/mad-kasroh.mp3',
     poin    : 20,
   },
+  {
+    id      : 'dhomah_panjang',
+    label   : 'Dhomah panjang / Mad (ـُو)',
+    gesture : 'right-long',
+    panah   : '→→',
+    animasi : 'panah-kanan',
+    hint    : 'Bunyi "uu" — geser JAUH ke kanan',
+    audio   : '/audio/mad-dhomah.mp3',
+    poin    : 20,
+  }
   //   {
   //   id      : 'jawaban_benar',
   //   label   : 'Jawaban benar',

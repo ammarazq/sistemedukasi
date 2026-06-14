@@ -109,19 +109,32 @@ export function useGame() {
     )
   );
 
-  setSkor(s => s + soalAktif.poin);
+  // setSkor(s => s + soalAktif.poin);
   setJumlahBenar(n => n + 1);
+  const totalBenarBaru = jumlahBenar + 1;
+
+  setSkor(
+    Math.round(
+      (totalBenarBaru / soalSesi.length) * 100
+    )
+  );
   mainkanSfx('benar');
   mainkanAudio(soalAktif.audio);
 
   setFeedback({
     status: 'benar',
     teks: 'Benar! 🎉',
-    sub: `+${soalAktif.poin} poin`
+    sub: 'Lanjut ke soal berikutnya'
   });
 }else {
 
   setJumlahSalah(n => n + 1);
+
+  setSkor(
+    Math.round(
+      (jumlahBenar / soalSesi.length) * 100
+    )
+  );
 
   mainkanSfx('salah');
 
@@ -179,7 +192,7 @@ export function useGame() {
   return {
     persen,
     bintang,
-    skor,
+    skor: persen,
     jumlahBenar,
     jumlahSalah: totalSoal - jumlahBenar,
     totalSoal,

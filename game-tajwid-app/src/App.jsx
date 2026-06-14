@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useGame } from './hooks/useGame';
-import {mainkanSfx} from './utils/audio';
+import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic} from './utils/audio';
 import { useEffect } from 'react';
 
 import Homescreen from './pages/Homescreen';
@@ -37,6 +37,8 @@ export default function App() {
   };
 
   const handlePilihMulai = () => {
+    stopIntroMusic();
+    mulaiGameplayMusic();
     game.mulaiSesi();
     setLayar('game');
   };
@@ -62,6 +64,7 @@ export default function App() {
   };
 
   const resetDanKeMenu = () => {
+  stopGameplayMusic();
   game.setHurufDipilih(null);
   setLayar('menu');
   };

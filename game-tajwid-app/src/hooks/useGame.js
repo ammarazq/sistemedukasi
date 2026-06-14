@@ -14,7 +14,7 @@
 import { useState, useCallback } from 'react';
 import { SOAL, CONFIG }          from '../data/soal';
 import { simpanProgres }         from '../utils/progres';
-import { mainkanAudio, mainkanSfx } from '../utils/audio';
+import { mainkanAudio, mainkanSfx, stopGameplayMusic } from '../utils/audio';
 
 function acakSoal(jumlah) {
   return [...SOAL].sort(() => Math.random() - 0.5).slice(0, jumlah);
@@ -163,6 +163,7 @@ export function useGame() {
           if (bintang >= 2) {
             mainkanSfx('menang');
           }
+          stopGameplayMusic();
           setLayar('hasil');
         }
         return next;

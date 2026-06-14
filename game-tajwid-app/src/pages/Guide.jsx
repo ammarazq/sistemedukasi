@@ -5,13 +5,15 @@ const HARAKAT_TABLE = [
   { arabic: 'بَ', latin: 'ba' },
   { arabic: 'بِ', latin: 'bi' },
   { arabic: 'بُ', latin: 'bu' },
-  { arabic: 'بْ', latin: 'b (sukun)' },
+  // { arabic: 'بْ', latin: 'b (sukun)' },
   // { arabic: 'بَّ', latin: 'bba (syaddah)' },
   // { arabic: 'بً', latin: 'ban' },
   // { arabic: 'بٍ', latin: 'bin' },
-  // { arabic: 'بٌ', latin: 'bun' },
+  // { arabic: 'بٌ', latin: 'bun' },(ـُو)
   { arabic: 'بَا', latin: 'baa' },
   { arabic: 'بِي', latin: 'bii' },
+  { arabic: 'بُو', latin: 'buu' },
+
 ];
 
 const STEPS = [

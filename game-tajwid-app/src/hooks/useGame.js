@@ -36,6 +36,9 @@ function getHurufBerharakat(huruf, gesture) {
 
     case 'down-long':
       return huruf + 'ِي'; // mad kasrah
+    
+    case 'right-long':
+      return huruf + 'ُو'; // mad dhomah
 
     default:
       return huruf;

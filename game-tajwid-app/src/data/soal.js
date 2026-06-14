@@ -13,7 +13,7 @@ export const SOAL = [
     animasi : 'panah-atas',
     hint    : 'Bunyi "a" — geser ke atas',
     audio   : '/audio/fathah-pendek.mp3',
-    poin    : 20,
+    // poin    : 20,
   },
   {
     id      : 'kasroh_pendek',
@@ -23,7 +23,7 @@ export const SOAL = [
     animasi : 'panah-atas',
     hint    : 'Bunyi "i" — geser ke bawah',
     audio   : '/audio/kasroh-pendek.mp3',
-    poin    : 20,
+    // poin    : 20,
   },
   {
     id      : 'dhomah_pendek',
@@ -33,7 +33,7 @@ export const SOAL = [
     animasi : 'panah-kanan',
     hint    : 'Bunyi "u" — geser ke kanan',
     audio   : '/audio/dhomah-pendek.mp3',
-    poin    : 20,
+    // poin    : 20,
   },
   {
     id      : 'fathah_panjang',
@@ -43,7 +43,7 @@ export const SOAL = [
     animasi : 'panah-atas',
     hint    : 'Bunyi "aa" — geser JAUH ke atas',
     audio   : '/audio/mad-fathah.mp3',
-    poin    : 20,
+    // poin    : 20,
   },
   {
     id      : 'kasroh_panjang',
@@ -53,8 +53,18 @@ export const SOAL = [
     animasi : 'panah-atas',
     hint    : 'Bunyi "ii" — geser JAUH ke bawah',
     audio   : '/audio/mad-kasroh.mp3',
-    poin    : 20,
+    // poin    : 20,
   },
+  {
+    id      : 'dhomah_panjang',
+    label   : 'Dhomah panjang / Mad (ـُو)',
+    gesture : 'right-long',
+    panah   : '→→',
+    animasi : 'panah-kanan',
+    hint    : 'Bunyi "uu" — geser JAUH ke kanan',
+    audio   : '/audio/mad-dhomah.mp3',
+    // poin    : 20,
+  }
   //   {
   //   id      : 'jawaban_benar',
   //   label   : 'Jawaban benar',
@@ -64,7 +74,7 @@ export const SOAL = [
 ];
 
 export const CONFIG = {
-  jumlahSoal  : 5,
+  jumlahSoal  : 6,
   jarakMin    : 15,   // px — gesture terlalu pendek, diabaikan
   jarakPendek : 35,   // px — threshold untuk harakat pendek
   jarakMad    : 55,   // px — threshold untuk harakat panjang

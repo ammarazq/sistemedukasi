@@ -14,7 +14,7 @@
 import { useState, useCallback } from 'react';
 import { SOAL, CONFIG }          from '../data/soal';
 import { simpanProgres }         from '../utils/progres';
-import { mainkanAudio, mainkanSfx } from '../utils/audio';
+import { mainkanAudio, mainkanSfx, stopGameplayMusic } from '../utils/audio';
 
 function acakSoal(jumlah) {
   return [...SOAL].sort(() => Math.random() - 0.5).slice(0, jumlah);
@@ -36,6 +36,9 @@ function getHurufBerharakat(huruf, gesture) {
 
     case 'down-long':
       return huruf + 'ِي'; // mad kasrah
+    
+    case 'right-long':
+      return huruf + 'ُو'; // mad dhomah
 
     default:
       return huruf;
@@ -106,19 +109,32 @@ export function useGame() {
     )
   );
 
-  setSkor(s => s + soalAktif.poin);
+  // setSkor(s => s + soalAktif.poin);
   setJumlahBenar(n => n + 1);
+  const totalBenarBaru = jumlahBenar + 1;
+
+  setSkor(
+    Math.round(
+      (totalBenarBaru / soalSesi.length) * 100
+    )
+  );
   mainkanSfx('benar');
   mainkanAudio(soalAktif.audio);
 
   setFeedback({
     status: 'benar',
     teks: 'Benar! 🎉',
-    sub: `+${soalAktif.poin} poin`
+    sub: 'Lanjut ke soal berikutnya'
   });
 }else {
 
   setJumlahSalah(n => n + 1);
+
+  setSkor(
+    Math.round(
+      (jumlahBenar / soalSesi.length) * 100
+    )
+  );
 
   mainkanSfx('salah');
 
@@ -144,9 +160,10 @@ export function useGame() {
           const bintang = persen >= 80 ? 3 : persen >= 50 ? 2 : 1;
           simpanProgres(hurufDipilih.arab, bintang);
 
-          if (bintang === 3)      mainkanSfx('levelup');
-          else if (bintang >= 2)  mainkanSfx('benar');
-
+          if (bintang >= 2) {
+            mainkanSfx('menang');
+          }
+          stopGameplayMusic();
           setLayar('hasil');
         }
         return next;
@@ -176,7 +193,7 @@ export function useGame() {
   return {
     persen,
     bintang,
-    skor,
+    skor: persen,
     jumlahBenar,
     jumlahSalah: totalSoal - jumlahBenar,
     totalSoal,

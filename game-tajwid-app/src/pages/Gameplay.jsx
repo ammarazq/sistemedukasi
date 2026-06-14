@@ -13,6 +13,7 @@ const REF_GESTUR = [
   { panah: '→',  label: 'Dhomah',    g: 'right'     },
   { panah: '↑↑', label: 'Mad atas',  g: 'up-long'   },
   { panah: '↓↓', label: 'Mad bawah', g: 'down-long' },
+  { panah: '→→', label: 'Mad dhomah', g: 'right-long' },
 ];
 
 export default function Game({

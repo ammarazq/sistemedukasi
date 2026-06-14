@@ -37,14 +37,23 @@ export function useGesture({ onGesture, aktif = true }) {
     let arah;
 
     // lebih toleran untuk geser kanan
+// dominan horizontal
     if (absX > absY * 0.8) {
-      arah = dx > 0 ? 'right' : 'left';
+
+      if (dx > 0) {
+        arah = panjang ? 'right-long' : 'right';
+      } else {
+        arah = 'left';
+      }
+
     } else {
+
       if (dy < 0) {
         arah = panjang ? 'up-long' : 'up';
       } else {
         arah = panjang ? 'down-long' : 'down';
       }
+
     }
 
     onGesture(arah);

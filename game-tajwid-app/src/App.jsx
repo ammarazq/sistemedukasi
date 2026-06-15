@@ -54,11 +54,13 @@ export default function App() {
   };
 
   const handleUlang = () => {
+    mainkanSfx('gameplay')
     game.mulaiSesi();
     setLayar('game');
   };
 
   const handleGantiHuruf = () => {
+    mainkanSfx('intro')
     game.setHurufDipilih(null);
     setLayar('pilih');
   };

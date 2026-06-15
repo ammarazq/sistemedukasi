@@ -1,12 +1,11 @@
-<<<<<<< HEAD
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useGame } from "./hooks/useGame";
-=======
-import { useState } from 'react';
-import { useGame } from './hooks/useGame';
-import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic, hentikanSemuaAudio} from './utils/audio';
-import { useEffect } from 'react';
->>>>>>> 75b3c0c0d3581beba137c0983b658c4ed1a4d24d
+import {
+  mulaiGameplayMusic,
+  stopIntroMusic,
+  hentikanSemuaAudio,
+  mainkanSfx,
+} from "./utils/audio";
 
 import Homescreen from "./pages/Homescreen";
 import Guide from "./pages/Guide";
@@ -20,22 +19,9 @@ export default function App() {
 
   const game = useGame();
 
-  // Jika game selesai, pindah ke halaman hasil
-  useEffect(() => {
-    if (game.layar === "hasil") {
-      setLayar("hasil");
-    }
-  }, [game.layar]);
-
   const handleMulai = () => {
-<<<<<<< HEAD
     game.setHurufDipilih(null);
     setLayar("pilih");
-=======
-    mainkanSfx('intro');
-    game.setHurufDipilih(null);
-    setLayar('pilih');
->>>>>>> 75b3c0c0d3581beba137c0983b658c4ed1a4d24d
   };
 
   const handlePanduan = () => {
@@ -67,20 +53,12 @@ export default function App() {
 
   const handleGantiHuruf = () => {
     hentikanSemuaAudio();
-    mainkanSfx('intro')
+    mainkanSfx("intro");
     game.setHurufDipilih(null);
     setLayar("pilih");
   };
 
   const resetDanKeMenu = () => {
-<<<<<<< HEAD
-=======
-  stopGameplayMusic();
-  game.setHurufDipilih(null);
-  setLayar('menu');
-  };
-  const handleBackToMenu = () => {
->>>>>>> 75b3c0c0d3581beba137c0983b658c4ed1a4d24d
     game.setHurufDipilih(null);
     setLayar("menu");
   };
@@ -132,7 +110,7 @@ export default function App() {
         />
       )}
 
-      {layar === "hasil" && (
+      {game.layar === "hasil" && (
         <Result
           hasilAkhir={game.hasilAkhir}
           huruf={game.hurufDipilih}

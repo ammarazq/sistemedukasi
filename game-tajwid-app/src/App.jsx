@@ -4,7 +4,7 @@ import { useGame } from "./hooks/useGame";
 =======
 import { useState } from 'react';
 import { useGame } from './hooks/useGame';
-import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic} from './utils/audio';
+import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic, hentikanSemuaAudio} from './utils/audio';
 import { useEffect } from 'react';
 >>>>>>> 75b3c0c0d3581beba137c0983b658c4ed1a4d24d
 
@@ -58,11 +58,16 @@ export default function App() {
   };
 
   const handleUlang = () => {
+    hentikanSemuaAudio();
+    // mainkanSfx('gameplay')
+    mulaiGameplayMusic();
     game.mulaiSesi();
     setLayar("game");
   };
 
   const handleGantiHuruf = () => {
+    hentikanSemuaAudio();
+    mainkanSfx('intro')
     game.setHurufDipilih(null);
     setLayar("pilih");
   };

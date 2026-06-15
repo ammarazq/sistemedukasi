@@ -115,6 +115,18 @@ export function mainkanLoop(path) {
   } catch {}
 }
 
+export function mulaiGameplayMusic() {
+  mainkanLoop(gameplay);
+}
+
+export function stopGameplayMusic() {
+  hentikanAudio(gameplay);
+}
+
+export function stopIntroMusic() {
+  hentikanAudio(intro);
+}
+
 export function mainkanSfx(jenis) {
   const map = {
     benar: '/audio/correct.mp3',

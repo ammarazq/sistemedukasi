@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useGame } from './hooks/useGame';
-import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic} from './utils/audio';
+import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic, hentikanSemuaAudio} from './utils/audio';
 import { useEffect } from 'react';
 
 import Homescreen from './pages/Homescreen';
@@ -54,19 +54,22 @@ export default function App() {
   };
 
   const handleUlang = () => {
-    mainkanSfx('gameplay')
+    hentikanSemuaAudio();
+    // mainkanSfx('gameplay')
+    mulaiGameplayMusic();
     game.mulaiSesi();
     setLayar('game');
   };
 
   const handleGantiHuruf = () => {
+    hentikanSemuaAudio();
     mainkanSfx('intro')
     game.setHurufDipilih(null);
     setLayar('pilih');
   };
 
   const resetDanKeMenu = () => {
-  stopGameplayMusic();
+  hentikanSemuaAudio();
   game.setHurufDipilih(null);
   setLayar('menu');
   };

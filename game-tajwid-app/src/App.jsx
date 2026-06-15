@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { useGame } from "./hooks/useGame";
+=======
+import { useState } from 'react';
+import { useGame } from './hooks/useGame';
+import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic} from './utils/audio';
+import { useEffect } from 'react';
+>>>>>>> 75b3c0c0d3581beba137c0983b658c4ed1a4d24d
 
 import Homescreen from "./pages/Homescreen";
 import Guide from "./pages/Guide";
@@ -21,8 +28,14 @@ export default function App() {
   }, [game.layar]);
 
   const handleMulai = () => {
+<<<<<<< HEAD
     game.setHurufDipilih(null);
     setLayar("pilih");
+=======
+    mainkanSfx('intro');
+    game.setHurufDipilih(null);
+    setLayar('pilih');
+>>>>>>> 75b3c0c0d3581beba137c0983b658c4ed1a4d24d
   };
 
   const handlePanduan = () => {
@@ -34,6 +47,8 @@ export default function App() {
   };
 
   const handlePilihMulai = () => {
+    stopIntroMusic();
+    mulaiGameplayMusic();
     game.mulaiSesi();
     setLayar("game");
   };
@@ -53,6 +68,14 @@ export default function App() {
   };
 
   const resetDanKeMenu = () => {
+<<<<<<< HEAD
+=======
+  stopGameplayMusic();
+  game.setHurufDipilih(null);
+  setLayar('menu');
+  };
+  const handleBackToMenu = () => {
+>>>>>>> 75b3c0c0d3581beba137c0983b658c4ed1a4d24d
     game.setHurufDipilih(null);
     setLayar("menu");
   };

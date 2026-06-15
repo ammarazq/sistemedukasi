@@ -1,140 +1,3 @@
-// // import bg from "../assets/images/homescreen.png";
-
-// // function HomeScreen({ start, guide, about }) {
-// //   return (
-// //     <div
-// //       style={{
-// //         backgroundImage: `url(${bg})`,
-// //         height: "100vh",
-// //         backgroundSize: "cover",
-// //       }}
-// //     >
-// //       <h1>HARAKATGO</h1>
-
-// //       <button onClick={start}>Mulai Bermain</button>
-// //       <button onClick={guide}>Panduan</button>
-// //       <button onClick={about}>Tentang</button>
-// //     </div>
-// //   );
-// // }
-
-// // export default HomeScreen;
-// //------------------
-// import bgImage from "../assets/images/homescreen.png";
-
-// function HomeScreen() {
-//   const styles = {
-//     container: {
-//       width: "100vw",
-//       height: "100vh",
-//       backgroundImage: `url(${bgImage})`,
-//       backgroundSize: "cover",
-//       backgroundPosition: "center",
-//       backgroundRepeat: "no-repeat",
-
-//       display: "flex",
-//       justifyContent: "center",
-//       alignItems: "center",
-
-//       overflow: "hidden",
-//     },
-
-//     content: {
-//       display: "flex",
-//       flexDirection: "column",
-//       alignItems: "center",
-//       textAlign: "center",
-
-//       marginTop: "-120px",
-//     },
-
-//     logo: {
-//       fontSize: "clamp(2.5rem, 8vw, 5rem)",
-//       fontWeight: "bold",
-//       color: "#2D6A4F",
-
-//       textShadow: `
-//         2px 2px 0px rgba(0,0,0,0.15),
-//         4px 4px 8px rgba(0,0,0,0.15)
-//       `,
-
-//       margin: 0,
-//       padding: 0,
-//     },
-
-//     tagline: {
-//       fontSize: "clamp(1rem, 2vw, 1.8rem)",
-//       color: "#1F2937",
-//       marginTop: "10px",
-//       marginBottom: "40px",
-//     },
-
-//     menu: {
-//       display: "flex",
-//       flexDirection: "column",
-//       gap: "15px",
-//     },
-
-//     button: {
-//       width: "220px",
-//       height: "60px",
-
-//       borderRadius: "40px",
-
-//       border: "3px solid #D4A017",
-
-//       backgroundColor: "#1B4332",
-
-//       color: "white",
-
-//       fontSize: "1.4rem",
-//       fontWeight: "600",
-
-//       cursor: "pointer",
-
-//       transition: "all 0.3s ease",
-//     },
-//   };
-
-//   return (
-//     <div style={styles.container}>
-//       <div style={styles.content}>
-//         <h1 style={styles.logo}>
-//           HarakatGo
-//         </h1>
-
-//         <p style={styles.tagline}>
-//           Belajar Harakat menjadi Menyenangkan
-//         </p>
-
-//         <div style={styles.menu}>
-//           <button
-//             style={styles.button}
-//             onClick={() => alert("Mulai")}
-//           >
-//             MULAI
-//           </button>
-
-//           <button
-//             style={styles.button}
-//             onClick={() => alert("Panduan")}
-//           >
-//             PANDUAN
-//           </button>
-
-//           <button
-//             style={styles.button}
-//             onClick={() => alert("Tentang")}
-//           >
-//             TENTANG
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default HomeScreen;
 import React from 'react';
 import MenuButton from './MenuButton';
 
@@ -209,6 +72,7 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
+        padding: 'clamp(12px,4vw,20px)',
       }}
     >
 
@@ -329,11 +193,11 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
         ))}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', fontFamily: "'Nunito', sans-serif" }}>
-      <div style={{ textAlign: 'center', marginBottom: '4rem', marginTop: '-5rem', animation: 'fadeDown 0.7s ease both' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem,5vw,4rem)', marginTop: 'clamp(-2rem,-3vw,-4rem)', animation: 'fadeDown 0.7s ease both' }}>
         <h1
           style={{
             fontFamily: "'Cinzel Decorative', serif",
-            fontSize: 'clamp(80px,7.5vw,100px)',
+            fontSize: 'clamp(38px,10vw,100px)',
             color: '#1a4d35',
             textShadow: '0 2px 0 rgba(255,255,255,0.35), 0 4px 16px rgba(0,80,40,0.2)',
             textAlign: 'center',
@@ -344,7 +208,7 @@ export default function Homescreen({ onMulai, onPanduan, onTentang, }) {
           Game<span style={{ color: '#0d7a50' }}>Land</span>
         </h1>
         <p style={{
-          fontSize: 'clamp(1.5rem, 2vw, 1.3rem)',
+          fontSize: 'clamp(1rem, 3vw, 1.5rem)',
           color: '#1B4332',
           margin: '0.5rem 0 0 0',
           fontWeight: '600'

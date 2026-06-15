@@ -17,7 +17,7 @@
 import { CONFIG } from '../data/soal';
 
 export default function ZonaGesture({ soal, feedback, jarakLive, gestureRef }) {
-  const isMad    = soal?.gesture === 'up-long' || soal?.gesture === 'down-long';
+  const isMad    = soal?.gesture === 'up-long' || soal?.gesture === 'down-long' || soal?.gesture === 'right-long';
   // const persen   = Math.min(100, Math.round((jarakLive / CONFIG.jarakMad) * 100));
   const targetJarak = isMad
   ? CONFIG.jarakMad
@@ -37,6 +37,7 @@ const namaHarakat = {
   right: 'Dhomah',
   'up-long': 'Mad',
   'down-long': 'Mad',
+  'right-long': 'Mad',
 };
 
 const teksProgress =

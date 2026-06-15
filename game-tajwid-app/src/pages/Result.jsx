@@ -36,17 +36,17 @@ export default function Hasil({ hasilAkhir, huruf, onUlang, onGantiHuruf, onHome
       background: 'linear-gradient(160deg,#FDF6EC 0%,#FFF0D0 100%)',
       gap: '8px',
     }}>
-      <div style={{ fontSize: '72px' }}>{INFO[bintang].emoji}</div>
-      <div style={{ fontSize: '26px', fontWeight: 800 }}>{INFO[bintang].judul}</div>
-      <div style={{ fontSize: '56px', fontWeight: 800, color: 'var(--aksen)', lineHeight: 1 }}>
+      <div style={{ fontSize: 'clamp(50px,12vw,72px)' }}>{INFO[bintang].emoji}</div>
+      <div style={{ fontSize: 'clamp(20px,5vw,30px)', fontWeight: 800 }}>{INFO[bintang].judul}</div>
+      <div style={{ fontSize: 'clamp(40px,10vw,60px)', fontWeight: 800, color: 'var(--aksen)', lineHeight: 1 }}>
         {skorTampil}
       </div>
       <div style={{ fontSize: '13px', color: 'var(--muted)' }}>dari 100 poin</div>
-      <div style={{ fontSize: '40px' }}>
+      <div style={{ fontSize: 'clamp(28px,8vw,40px)' }}>
         {'★'.repeat(bintang)}{'☆'.repeat(3 - bintang)}
       </div>
 
-      <Kartu style={{ width: '100%', maxWidth: '340px' }}>
+      <Kartu style={{ width: '100%', maxWidth: 'min(90vw, 420px)' }}>
         {[
           { label: 'Huruf',      val: `${huruf?.arab} (${huruf?.latin})`, cls: '' },
           { label: 'Benar',      val: jumlahBenar, cls: 'hijau' },
@@ -67,21 +67,21 @@ export default function Hasil({ hasilAkhir, huruf, onUlang, onGantiHuruf, onHome
         ))}
       </Kartu>
 
-      <div style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '500px' }}>
+      <div style={{ display: 'flex', gap: '12px', width: '100%', maxWidth: '600px', flexWrap: 'wrap', justifyContent: 'center', }}>
         <Tombol
           label="🏠 Beranda"
-          style={{ flex: 1 }}
+          style={{ flex: '1 1 180px'}}
           onClick={onHome}
         />
         <Tombol 
           label="Ganti Huruf" 
-          style={{ flex: 1 }} 
+          style={{ flex: '1 1 180px'}} 
           onClick={onGantiHuruf}
           />
         <Tombol 
           label="Ulangi Lagi ↺"
           gold
-          style={{ flex: 2 }}
+          style={{ flex: '1 1 240px' }}
           onClick={onUlang}
           />
       </div>

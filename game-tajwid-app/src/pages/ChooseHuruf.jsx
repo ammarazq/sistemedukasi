@@ -16,16 +16,16 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg)'}}>
       {/* Header */}
       <div style={{
-        background: 'var(--card)', padding: '20px 20px 16px',
+        background: 'var(--card)', padding: 'clamp(12px, 3vw, 20px) clamp(16px, 3vw, 20px) clamp(12px, 2.5vh, 16px)',
         boxShadow: '0 2px 8px rgba(44,24,16,.06)',
       }}>
-      <div style={{ maxWidth: '30px', marginBottom: '6px' }}>
+      <div style={{ width: '100%', marginBottom: 'clamp(8px, 2vh, 12px)', display: 'flex' }}>
         <Tombol
           onClick={onBack}
           style={{
-            width: '120px',
-            padding: '8px 12px',
-            fontSize: '13px',
+            width: 'clamp(100px, 30vw, 150px)',
+            padding: 'clamp(6px, 1.5vh, 8px) clamp(10px, 2vw, 12px)',
+            fontSize: 'clamp(12px, 2.2vw, 14px)',
           }}
         >
           ← Kembali
@@ -34,7 +34,7 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       <div style={{ textAlign: 'center' }}>
   <div
     style={{
-      fontSize: '40px',
+      fontSize: 'clamp(28px, 6vw, 48px)',
       animation: 'bounce 2s infinite'
     }}
   >
@@ -44,9 +44,10 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
 
   <h1
     style={{
-      fontSize: '35px',
+      fontSize: 'clamp(24px, 7vw, 40px)',
       fontWeight: 800,
-      color: '#FFC107'
+      color: '#FFC107',
+      margin: 'clamp(8px, 2vh, 16px) 0 clamp(6px, 1.5vh, 12px) 0'
     }}
   >
     Pilih Huruf Hijaiyah
@@ -54,7 +55,7 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
 
   <p
     style={{
-      fontSize: '17px',
+      fontSize: 'clamp(13px, 2.5vw, 17px)',
       color: 'var(--muted)'
     }}
   >
@@ -62,7 +63,7 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
   </p>
 </div>
         {/* <h1 style={{ fontSize: '35px', fontWeight: 800, textAlign: 'center'}}>Pilih Huruf</h1> */}
-        <p  style={{ fontSize: '17px', color: 'var(--muted)', marginTop: 2, textAlign: 'center'}}>
+        <p  style={{ fontSize: 'clamp(13px, 2.5vw, 17px)', color: 'var(--muted)', marginTop: 'clamp(4px, 1vh, 8px)', textAlign: 'center'}}>
           Tap huruf yang ingin dipelajari
         </p>
       </div>
@@ -70,8 +71,8 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       {/* Grid huruf */}
       <div className= "huruf-grid"
       style={{
-        display: 'grid', gridTemplateColumns: 'repeat(4,1fr)',
-        gap: '10px', padding: '16px', overflowY: 'auto', flex: 1,
+        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(70px, 18vw, 90px), 1fr))',
+        gap: 'clamp(8px, 2vw, 12px)', padding: 'clamp(12px, 2vw, 16px)', overflowY: 'auto', flex: 1,
         minHeight: 0,
       }}>
         {HURUF.map(h => {
@@ -84,13 +85,13 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
               style   = {{
                 background  : dipilih ? '#FFF3D4' : 'var(--card)',
                 border      : `1.5px solid ${dipilih ? 'var(--aksen)' : 'var(--border)'}`,
-                borderRadius: '12px',
-                padding     : '10px 4px 8px',
+                borderRadius: 'clamp(8px, 2vw, 12px)',
+                padding     : 'clamp(8px, 1.5vw, 10px) clamp(2px, 1vw, 4px) clamp(6px, 1.2vw, 8px)',
                 cursor      : 'pointer',
                 display     : 'flex',
                 flexDirection: 'column',
                 alignItems  : 'center',
-                gap         : '3px',
+                gap         : 'clamp(2px, 0.5vw, 4px)',
                 position    : 'relative',
                 boxShadow   : dipilih ? '0 0 0 2px rgba(212,134,10,.2)' : 'none',
                 transform  : dipilih ? 'scale(1.08)' : 'scale(1)',
@@ -107,12 +108,12 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
                 </span>
               )}
               <span style={{
-                fontFamily: 'var(--font-arab)', fontSize: 'clamp(36px,7vw,50px)',
+                fontFamily: 'var(--font-arab)', fontSize: 'clamp(28px, 6vw, 48px)',
                 lineHeight: 1.1, color: dipilih ? 'var(--aksen)' : 'var(--teks)',
               }}>
                 {h.arab}
               </span>
-              <span style={{ fontSize: '9px', color: dipilih ? 'var(--aksen)' : 'var(--muted)', fontWeight: 600 }}>
+              <span style={{ fontSize: 'clamp(7px, 1.5vw, 9px)', color: dipilih ? 'var(--aksen)' : 'var(--muted)', fontWeight: 600 }}>
                 {h.latin}
               </span>
             </button>
@@ -122,7 +123,7 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
 
       {/* Footer tombol */}
       <div style={{
-        padding: '16px', background: 'var(--card)',
+        padding: 'clamp(12px, 2vw, 16px)', background: 'var(--card)',
         boxShadow: '0 -2px 8px rgba(44,24,16,.06)',
       }}>
         <Tombol
@@ -157,16 +158,13 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
     <div
       style={{
         width: '90%',
-        maxWidth: '420px',
-        padding: '28px',
-        borderRadius: '24px',
-
+        maxWidth: 'clamp(300px, 85vw, 420px)',
+        padding: 'clamp(20px, 4vw, 28px)',
+        borderRadius: 'clamp(16px, 4vw, 24px)',
         background:
           'linear-gradient(180deg,#FFFDF7 0%,#FFF4D6 100%)',
-
         boxShadow:
           '0 15px 40px rgba(0,0,0,.25)',
-
         textAlign: 'center',
         animation: 'zoomIn .25s ease',
       }}
@@ -174,8 +172,8 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       {/* Icon */}
       <div
         style={{
-          fontSize: '56px',
-          marginBottom: '10px',
+          fontSize: 'clamp(40px, 10vw, 56px)',
+          marginBottom: 'clamp(8px, 2vw, 10px)',
         }}
       >
         📚✨
@@ -185,10 +183,10 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       <h2
         style={{
           margin: 0,
-          fontSize: '30px',
+          fontSize: 'clamp(20px, 5vw, 30px)',
           fontWeight: 800,
           color: '#0f8a70',
-          marginBottom: '12px',
+          marginBottom: 'clamp(8px, 2vw, 12px)',
         }}
       >
         Pilih Huruf Dulu
@@ -197,10 +195,10 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
       {/* Description */}
       <p
         style={{
-          fontSize: '17px',
+          fontSize: 'clamp(13px, 2.5vw, 17px)',
           lineHeight: 1.6,
           color: '#555',
-          marginBottom: '24px',
+          marginBottom: 'clamp(16px, 3vw, 24px)',
         }}
       >
         Silakan pilih salah satu
@@ -212,24 +210,24 @@ export default function PilihHuruf({ hurufDipilih, onPilih, onMulai, onBack }) {
 
       {/* Button */}
       <div
-  style={{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  }}
->
-  <Tombol
-    onClick={() => setShowModal(false)}
-    gold
-    style={{
-      width: '180px',
-      margin: '0 auto',
-    }}
-  >
-    Mengerti
-  </Tombol>
-</div>
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        <Tombol
+          onClick={() => setShowModal(false)}
+          gold
+          style={{
+            width: 'clamp(140px, 50vw, 180px)',
+            margin: '0 auto',
+          }}
+        >
+          Mengerti
+        </Tombol>
+      </div>
     </div>
   </div>
 )}

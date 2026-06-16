@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { defineConfig } from 'vite'
 // import react from '@vitejs/plugin-react'
 
@@ -10,10 +11,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+=======
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
+>>>>>>> 023099a7b936e878eb8991e00bd0841b262ce8a4
 
 export default defineConfig({
   plugins: [
     react(),
+<<<<<<< HEAD
 
     VitePWA({
       registerType: 'autoUpdate',
@@ -63,3 +70,32 @@ export default defineConfig({
     }),
   ],
 })
+=======
+    VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: ["favicon.svg", "favicon1.svg", "icons.svg", "hero.png"],
+      manifest: {
+        name: "Game Tajwid",
+        short_name: "Game Tajwid",
+        description: "Game edukasi tajwid yang bisa dipasang di perangkat.",
+        theme_color: "#0f8a70",
+        background_color: "#0f8a70",
+        display: "standalone",
+        scope: "/",
+        start_url: "/",
+        icons: [
+          {
+            src: "/favicon.svg",
+            sizes: "any",
+            type: "image/svg+xml",
+            purpose: "any maskable",
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,svg,png,ico,json,woff2}"],
+      },
+    }),
+  ],
+});
+>>>>>>> 023099a7b936e878eb8991e00bd0841b262ce8a4

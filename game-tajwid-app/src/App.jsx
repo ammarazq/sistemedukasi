@@ -1,57 +1,46 @@
-import { useState } from 'react';
-import { useGame } from './hooks/useGame';
-// import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic} from './utils/audio';
-import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic, hentikanSemuaAudio} from './utils/audio';
-import { useEffect } from 'react';
+import { useState } from "react";
+import { useGame } from "./hooks/useGame";
+import {
+  mulaiGameplayMusic,
+  stopIntroMusic,
+  hentikanSemuaAudio,
+  mainkanSfx,
+} from "./utils/audio";
 
-import Homescreen from './pages/Homescreen';
-import Guide from './pages/Guide';
-import About from './pages/About';
-import ChooseHuruf from './pages/ChooseHuruf';
-import Gameplay from './pages/Gameplay';
-import Result from './pages/Result';
+import Homescreen from "./pages/Homescreen";
+import Guide from "./pages/Guide";
+import About from "./pages/About";
+import ChooseHuruf from "./pages/ChooseHuruf";
+import Gameplay from "./pages/Gameplay";
+import Result from "./pages/Result";
 
 export default function App() {
-  const [layar, setLayar] = useState('menu');
+  const [layar, setLayar] = useState("menu");
 
   const game = useGame();
 
-  // Jika game selesai, pindah ke halaman hasil
-  useEffect(() => {
-    if (game.layar === 'hasil') {
-      setLayar('hasil');
-    }
-  }, [game.layar]);
-
   const handleMulai = () => {
-    mainkanSfx('intro');
     game.setHurufDipilih(null);
-    setLayar('pilih');
+    setLayar("pilih");
   };
 
   const handlePanduan = () => {
-    setLayar('panduan');
+    setLayar("panduan");
   };
 
   const handleTentang = () => {
-    setLayar('tentang');
+    setLayar("tentang");
   };
 
   const handlePilihMulai = () => {
     stopIntroMusic();
     mulaiGameplayMusic();
     game.mulaiSesi();
-    setLayar('game');
+    setLayar("game");
   };
 
   const handleGesture = (arah) => {
     game.cekJawaban(arah);
-
-    setTimeout(() => {
-      if (game.layar === 'hasil') {
-        setLayar('hasil');
-      }
-    }, 1600);
   };
 
   const handleUlang = () => {
@@ -59,37 +48,33 @@ export default function App() {
     // mainkanSfx('gameplay')
     mulaiGameplayMusic();
     game.mulaiSesi();
-    setLayar('game');
+    setLayar("game");
   };
 
   const handleGantiHuruf = () => {
     hentikanSemuaAudio();
-    mainkanSfx('intro')
+    mainkanSfx("intro");
     game.setHurufDipilih(null);
-    setLayar('pilih');
+    setLayar("pilih");
   };
 
   const resetDanKeMenu = () => {
-  game.setHurufDipilih(null);
-  setLayar('menu');
-  };
-  const handleBackToMenu = () => {
     game.setHurufDipilih(null);
-    setLayar('menu');
+    setLayar("menu");
   };
 
   return (
     <div
       style={{
-        width: '100%',
-        minHeight: '100vh',
-        position: 'relative',
-        overflowX: 'hidden',
+        width: "100%",
+        minHeight: "100vh",
+        position: "relative",
+        overflowX: "hidden",
         background:
-          'linear-gradient(160deg,#a8eddc 0%,#56c8a8 30%,#2db891 60%,#0f8a70 100%)',
+          "linear-gradient(160deg,#a8eddc 0%,#56c8a8 30%,#2db891 60%,#0f8a70 100%)",
       }}
     >
-      {layar === 'menu' && (
+      {layar === "menu" && (
         <Homescreen
           onMulai={handleMulai}
           onPanduan={handlePanduan}
@@ -97,24 +82,20 @@ export default function App() {
         />
       )}
 
-      {layar === 'panduan' && (
-        <Guide onBack={() => setLayar('menu')} />
-      )}
+      {layar === "panduan" && <Guide onBack={() => setLayar("menu")} />}
 
-      {layar === 'tentang' && (
-        <About onBack={resetDanKeMenu} />
-      )}
+      {layar === "tentang" && <About onBack={resetDanKeMenu} />}
 
-      {layar === 'pilih' && (
+      {layar === "pilih" && (
         <ChooseHuruf
           hurufDipilih={game.hurufDipilih}
           onPilih={game.setHurufDipilih}
           onMulai={handlePilihMulai}
           onBack={resetDanKeMenu}
         />
-)}
+      )}
 
-      {layar === 'game' && (
+      {layar === "game" && (
         <Gameplay
           huruf={game.hurufDipilih}
           hurufTampil={game.hurufTampil}
@@ -129,7 +110,7 @@ export default function App() {
         />
       )}
 
-      {layar === 'hasil' && (
+      {game.layar === "hasil" && (
         <Result
           hasilAkhir={game.hasilAkhir}
           huruf={game.hurufDipilih}

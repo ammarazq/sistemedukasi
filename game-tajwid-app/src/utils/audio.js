@@ -9,8 +9,65 @@ const _cache = {};
 
 export function mainkanAudio(path) {
   try {
-    if (!_cache[path]) _cache[path] = new Audio(path);
+    if (!_cache[path]) {
+      _cache[path] = new Audio(path);
+    }
+
     const a = _cache[path];
+
+    a.currentTime = 0;
+    a.play().catch(() => {});
+
+  } catch {}
+}
+
+export function hentikanAudio(path) {
+  try {
+    const a = _cache[path];
+
+    if (!a) return;
+
+    a.pause();
+    a.currentTime = 0;
+  } catch {}
+}
+
+export function mainkanLoop(path) {
+  try {
+    if (!_cache[path]) {
+      _cache[path] = new Audio(path);
+    }
+
+    const a = _cache[path];
+
+    a.loop = true;
+    a.currentTime = 0;
+    a.play().catch(() => {});
+
+
+  } catch {}
+}
+
+export function hentikanAudio(path) {
+  try {
+    const a = _cache[path];
+
+    if (!a) return;
+
+    a.pause();
+    a.currentTime = 0;
+  } catch {}
+}
+
+export function mainkanLoop(path) {
+  try {
+    if (!_cache[path]) {
+      _cache[path] = new Audio(path);
+    }
+
+    const a = _cache[path];
+
+    a.loop = true;
     a.currentTime = 0;
     a.play().catch(() => {});
   } catch (e) {
@@ -39,6 +96,18 @@ export function mainkanLoop(path) {
   } catch (e) {
     console.error("audio loop error", e);
   }
+}
+
+export function mulaiGameplayMusic() {
+  mainkanLoop(gameplay);
+}
+
+export function stopGameplayMusic() {
+  hentikanAudio(gameplay);
+}
+
+export function stopIntroMusic() {
+  hentikanAudio(intro);
 }
 
 export function mulaiGameplayMusic() {

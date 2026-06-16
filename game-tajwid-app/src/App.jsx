@@ -1,7 +1,13 @@
-import { useState } from 'react';
-import { useGame } from './hooks/useGame';
-import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic, hentikanSemuaAudio} from './utils/audio';
-import { useEffect } from 'react';
+import { useState } from "react";
+import { useGame } from "./hooks/useGame";
+import {
+  mainkanSfx,
+  mulaiGameplayMusic,
+  stopGameplayMusic,
+  stopIntroMusic,
+  hentikanSemuaAudio,
+} from "./utils/audio";
+import { useEffect } from "react";
 
 import Homescreen from "./pages/Homescreen";
 import Guide from "./pages/Guide";
@@ -49,15 +55,15 @@ export default function App() {
 
   const handleGantiHuruf = () => {
     hentikanSemuaAudio();
-    mainkanSfx('intro')
+    mainkanSfx("intro");
     game.setHurufDipilih(null);
     setLayar("pilih");
   };
 
   const resetDanKeMenu = () => {
-  hentikanSemuaAudio();
-  game.setHurufDipilih(null);
-  setLayar('menu');
+    hentikanSemuaAudio();
+    game.setHurufDipilih(null);
+    setLayar("menu");
   };
   const handleBackToMenu = () => {
     game.setHurufDipilih(null);
@@ -96,7 +102,7 @@ export default function App() {
         />
       )}
 
-      {layar === "game" && (
+      {layar === "game" && game.layar !== "hasil" && (
         <Gameplay
           huruf={game.hurufDipilih}
           hurufTampil={game.hurufTampil}

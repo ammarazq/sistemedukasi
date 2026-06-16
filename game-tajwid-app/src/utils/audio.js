@@ -1,9 +1,18 @@
-// import correct from '../assets/audio/correct.mp3';
-// import wrong from '../assets/audio/wrong.mp3';
-// import levelUp from '../assets/audio/level-up.mp3';
-// import victory from '../assets/audio/victory.mp3';
-// import intro from '../assets/audio/intro.mp3';
-// import gameplay from '../assets/audio/gameplay.mp3';
+import correct from "../assets/audio/correct.mp3";
+import wrong from "../assets/audio/wrong.mp3";
+import levelUp from "../assets/audio/level-up.mp3";
+import victory from "../assets/audio/victory.mp3";
+import intro from "../assets/audio/intro.mp3";
+import gameplay from "../assets/audio/gameplay.mp3";
+
+const AUDIO_MAP = {
+  benar: correct,
+  salah: wrong,
+  levelup: levelUp,
+  menang: victory,
+  intro: intro,
+  gameplay: gameplay,
+};
 
 // const _cache = {};
 
@@ -113,27 +122,24 @@ export function mainkanLoop(path) {
 }
 
 export function mulaiGameplayMusic() {
-  mainkanLoop(gameplay);
+  mainkanLoop(AUDIO_MAP.gameplay);
+}
+
+export function mulaiIntroMusic() {
+  mainkanLoop(AUDIO_MAP.intro);
 }
 
 export function stopGameplayMusic() {
-  hentikanAudio(gameplay);
+  hentikanAudio(AUDIO_MAP.gameplay);
 }
 
 export function stopIntroMusic() {
-  hentikanAudio(intro);
+  hentikanAudio(AUDIO_MAP.intro);
 }
 
 export function mainkanSfx(jenis) {
-  const map = {
-    benar: "/audio/correct.mp3",
-    salah: "/audio/wrong.mp3",
-    levelup: "/audio/level-up.mp3",
-    menang: "/audio/victory.mp3",
-    intro: "/audio/intro.mp3",
-  };
-
-  if (map[jenis]) mainkanAudio(map[jenis]);
+  const path = AUDIO_MAP[jenis];
+  if (path) mainkanAudio(path);
 }
 
 export function hentikanSemuaAudio() {
@@ -146,29 +152,4 @@ export function hentikanSemuaAudio() {
   } catch (e) {
     console.error("stop all audio error", e);
   }
-}
-
-const GAMEPLAY_AUDIO = "/audio/gameplay.mp3";
-const INTRO_AUDIO = "/audio/intro.mp3";
-
-export function mulaiGameplayMusic() {
-  mainkanLoop(GAMEPLAY_AUDIO);
-}
-
-export function stopGameplayMusic() {
-  hentikanAudio(GAMEPLAY_AUDIO);
-}
-
-export function stopIntroMusic() {
-  hentikanAudio(INTRO_AUDIO);
-}
-
-export function hentikanSemuaAudio() {
-  try {
-    Object.values(_cache).forEach((audio) => {
-      audio.pause();
-      audio.currentTime = 0;
-      audio.loop = false;
-    });
-  } catch {}
 }

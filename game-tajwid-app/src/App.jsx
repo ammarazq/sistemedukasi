@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useGame } from './hooks/useGame';
+// import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic} from './utils/audio';
 import {mainkanSfx, mulaiGameplayMusic, stopGameplayMusic, stopIntroMusic, hentikanSemuaAudio} from './utils/audio';
 import { useEffect } from 'react';
 
@@ -69,7 +70,6 @@ export default function App() {
   };
 
   const resetDanKeMenu = () => {
-  hentikanSemuaAudio();
   game.setHurufDipilih(null);
   setLayar('menu');
   };

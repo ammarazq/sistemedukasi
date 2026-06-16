@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // import { defineConfig } from 'vite'
 // import react from '@vitejs/plugin-react'
 
@@ -16,10 +17,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 >>>>>>> 023099a7b936e878eb8991e00bd0841b262ce8a4
+=======
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
+>>>>>>> 8f0efff200184241c400ece1efde6ba52aa50ab8
 
 export default defineConfig({
   plugins: [
     react(),
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     VitePWA({
@@ -71,6 +78,8 @@ export default defineConfig({
   ],
 })
 =======
+=======
+>>>>>>> 8f0efff200184241c400ece1efde6ba52aa50ab8
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "favicon1.svg", "icons.svg", "hero.png"],
@@ -98,4 +107,7 @@ export default defineConfig({
     }),
   ],
 });
+<<<<<<< HEAD
 >>>>>>> 023099a7b936e878eb8991e00bd0841b262ce8a4
+=======
+>>>>>>> 8f0efff200184241c400ece1efde6ba52aa50ab8

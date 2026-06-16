@@ -1,20 +1,27 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
-import { registerSW } from "virtual:pwa-register";
-import { registerServiceWorker } from "./registerSW";
+// import { StrictMode } from 'react'
+// import { createRoot } from 'react-dom/client'
+// import './index.css'
+// import App from './App.jsx'
 
-// VitePWA auto registration
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+//     <App />
+//   </StrictMode>,
+// )
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { registerSW } from 'virtual:pwa-register'
+
+import './index.css'
+import App from './App.jsx'
+
 registerSW({
   immediate: true,
-});
+})
 
-// Manual Service Worker registration (fallback)
-registerServiceWorker();
-
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>,
-);
+)
